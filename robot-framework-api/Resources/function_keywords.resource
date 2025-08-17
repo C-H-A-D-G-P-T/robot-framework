@@ -147,7 +147,7 @@ Export contacts as JSON
         END
         Log    ${contact_list}
         ${dump_json}=    Evaluate    json.dumps(${contact_list}, indent=4, ensure_ascii=False)    json
-        Create File    api-automation/robot-framework-api/Result/contacts.json    ${dump_json}
+        Create File    robot-framework-api/Result/contacts.json    ${dump_json}
     END
 
 Log out

@@ -108,7 +108,7 @@ Export contacts as JSON
     END
     Log    ${contact_list}
     ${dump_json}=    Evaluate    json.dumps(${contact_list}, indent=4, ensure_ascii=False)    json
-    Create File    ui-automation/robot-framework-ui/Result/contacts.json    ${dump_json}
+    Create File    robot-framework-ui/Result/contacts.json    ${dump_json}
 
 Delete all contacts
     WHILE    ${True}
