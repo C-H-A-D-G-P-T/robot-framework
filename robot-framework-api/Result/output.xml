@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.1 (Python 3.11.9 on win32)" generated="2025-08-17T17:38:32.795469" rpa="false" schemaversion="5">
+<suite id="s1" name="Test" source="C:\Users\Crwar\Desktop\Portfolio\robot-framework\robot-framework-api\Test">
+<suite id="s1-s1" name="E2E" source="C:\Users\Crwar\Desktop\Portfolio\robot-framework\robot-framework-api\Test\E2E.robot">
+<kw name="Evaluate" owner="BuiltIn" type="SETUP">
+<arg>urllib3.disable_warnings()</arg>
+<arg>urllib3</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-17T17:38:33.302245" elapsed="0.000000"/>
+</kw>
+<test id="s1-s1-t1" name="Verify that a user can successfully register, log in, add 10 contacts, export contacts as JSON, delete all contacts, and log out" line="7">
+<kw name="Register New User" owner="function_keywords">
+<group name="Prepare Headers and JSON Body for Register API">
+<kw name="First Name" owner="faker">
+<msg time="2025-08-17T17:38:33.303259" level="INFO">${first_name} = Brandon</msg>
+<var>${first_name}</var>
+<status status="PASS" start="2025-08-17T17:38:33.303259" elapsed="0.000000"/>
+</kw>
+<kw name="Last Name" owner="faker">
+<msg time="2025-08-17T17:38:33.304258" level="INFO">${last_name} = Skinner</msg>
+<var>${last_name}</var>
+<status status="PASS" start="2025-08-17T17:38:33.303259" elapsed="0.000999"/>
+</kw>
+<kw name="Generate Email And Password" owner="function_keywords">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-08-17T17:38:33.304258" level="INFO">${current_date} = 20250817173833</msg>
+<var>${current_date}</var>
+<arg>result_format=%Y%m%d%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-08-17T17:38:33.304258" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-17T17:38:33.304258" level="INFO">${email} = t20250817173833@gmail.com</msg>
+<var>${email}</var>
+<arg>t${current_date}@gmail.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-17T17:38:33.304258" elapsed="0.000000"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2025-08-17T17:38:33.305259" level="INFO">${password} = VqkMAcyWDN</msg>
+<var>${password}</var>
+<arg>10</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-08-17T17:38:33.304258" elapsed="0.001001"/>
+</kw>
+<return>
+<value>${email}</value>
+<value>${password}</value>
+<status status="PASS" start="2025-08-17T17:38:33.305259" elapsed="0.000000"/>
+</return>
+<msg time="2025-08-17T17:38:33.305259" level="INFO">${email} = t20250817173833@gmail.com</msg>
+<msg time="2025-08-17T17:38:33.305259" level="INFO">${password} = VqkMAcyWDN</msg>
+<var>${email}</var>
+<var>${password}</var>
+<status status="PASS" start="2025-08-17T17:38:33.304258" elapsed="0.001001"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:33.305259" level="INFO">${body} = {'firstName': 'Brandon', 'lastName': 'Skinner', 'email': 't20250817173833@gmail.com', 'password': 'VqkMAcyWDN'}</msg>
+<var>${body}</var>
+<arg>firstName=${first_name}</arg>
+<arg>lastName=${last_name}</arg>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:33.305259" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:33.305259" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:33.305259" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:33.303259" elapsed="0.002000"/>
+</group>
+<group name="Call Register API">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:33.306258" level="INFO">Creating Session using : alias=Register, url=https://thinking-tester-contact-list.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Register</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-17T17:38:33.306258" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:34.424558" level="INFO">POST Request : url=https://thinking-tester-contact-list.herokuapp.com/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '111'} 
+ body=b'{"firstName": "Brandon", "lastName": "Skinner", "email": "t20250817173833@gmail.com", "password": "VqkMAcyWDN"}' 
+ </msg>
+<msg time="2025-08-17T17:38:34.424558" level="INFO">POST Response : url=https://thinking-tester-contact-list.herokuapp.com/users 
+ status=201, reason=Created 
+ headers={'Server': 'Cowboy', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1755427113&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=6sMQsVC4XpkHd1SrPxuT9om2gqwo27ML0o5tnq3ttME%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1755427113&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=6sMQsVC4XpkHd1SrPxuT9om2gqwo27ML0o5tnq3ttME%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Set-Cookie': 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyOWYxOGY4MzAwMTU4MDQ5NzEiLCJpYXQiOjE3NTU0MjcxMTN9.b6CKKjqp8MfE1zFUK0F2UPV37fWvtEiqESCkBAWTWuc; Max-Age=684; Path=/; Expires=Sun, 17 Aug 2025 10:49:57 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '290', 'Etag': 'W/"122-1nzhT9ybZ3uBfDy+lm6WAbhbuWA"', 'Date': 'Sun, 17 Aug 2025 10:38:33 GMT', 'Via': '1.1 vegur'} 
+ body={"user":{"_id":"68a1b129f18f830015804971","firstName":"Brandon","lastName":"Skinner","email":"t20250817173833@gmail.com","__v":1},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyOWYxOGY4MzAwMTU4MDQ5NzEiLCJpYXQiOjE3NTU0MjcxMTN9.b6CKKjqp8MfE1zFUK0F2UPV37fWvtEiqESCkBAWTWuc"} 
+ </msg>
+<msg time="2025-08-17T17:38:34.424558" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>alias=Register</arg>
+<arg>url=${ADD_USER_URI}</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-17T17:38:33.306258" elapsed="1.119386"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:33.305259" elapsed="1.120385"/>
+</group>
+<group name="Response Validation">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][firstName]</arg>
+<arg>${first_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.425644" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][lastName]</arg>
+<arg>${last_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.425644" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][email]</arg>
+<arg>${email}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.426665" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${response.json()}[token]</value>
+<value>${first_name}</value>
+<value>${last_name}</value>
+<value>${email}</value>
+<value>${password}</value>
+<status status="PASS" start="2025-08-17T17:38:34.426665" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-08-17T17:38:34.425644" elapsed="0.001021"/>
+</group>
+<msg time="2025-08-17T17:38:34.426665" level="INFO">${registered_bearer_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyOWYxOGY4MzAwMTU4MDQ5NzEiLCJpYXQiOjE3NTU0MjcxMTN9.b6CKKjqp8MfE1zFUK0F2UPV37fWvtEiqESCkBAWTWuc</msg>
+<msg time="2025-08-17T17:38:34.426665" level="INFO">${first_name} = Brandon</msg>
+<msg time="2025-08-17T17:38:34.426665" level="INFO">${last_name} = Skinner</msg>
+<msg time="2025-08-17T17:38:34.426665" level="INFO">${email} = t20250817173833@gmail.com</msg>
+<msg time="2025-08-17T17:38:34.426665" level="INFO">${password} = VqkMAcyWDN</msg>
+<var>${registered_bearer_token}</var>
+<var>${first_name}</var>
+<var>${last_name}</var>
+<var>${email}</var>
+<var>${password}</var>
+<status status="PASS" start="2025-08-17T17:38:33.303259" elapsed="1.123406"/>
+</kw>
+<kw name="Log in with new registered user" owner="function_keywords">
+<group name="Prepare Headers and JSON Body for Register API">
+<kw name="Register New User" owner="function_keywords">
+<group name="Prepare Headers and JSON Body for Register API">
+<kw name="First Name" owner="faker">
+<msg time="2025-08-17T17:38:34.427664" level="INFO">${first_name} = Patricia</msg>
+<var>${first_name}</var>
+<status status="PASS" start="2025-08-17T17:38:34.427664" elapsed="0.000000"/>
+</kw>
+<kw name="Last Name" owner="faker">
+<msg time="2025-08-17T17:38:34.427664" level="INFO">${last_name} = Roberts</msg>
+<var>${last_name}</var>
+<status status="PASS" start="2025-08-17T17:38:34.427664" elapsed="0.000000"/>
+</kw>
+<kw name="Generate Email And Password" owner="function_keywords">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-08-17T17:38:34.428650" level="INFO">${current_date} = 20250817173834</msg>
+<var>${current_date}</var>
+<arg>result_format=%Y%m%d%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.428650" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-17T17:38:34.428650" level="INFO">${email} = t20250817173834@gmail.com</msg>
+<var>${email}</var>
+<arg>t${current_date}@gmail.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.428650" elapsed="0.000000"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2025-08-17T17:38:34.428650" level="INFO">${password} = TXTmHUnGNh</msg>
+<var>${password}</var>
+<arg>10</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.428650" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${email}</value>
+<value>${password}</value>
+<status status="PASS" start="2025-08-17T17:38:34.428650" elapsed="0.000000"/>
+</return>
+<msg time="2025-08-17T17:38:34.428650" level="INFO">${email} = t20250817173834@gmail.com</msg>
+<msg time="2025-08-17T17:38:34.428650" level="INFO">${password} = TXTmHUnGNh</msg>
+<var>${email}</var>
+<var>${password}</var>
+<status status="PASS" start="2025-08-17T17:38:34.428650" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:34.429648" level="INFO">${body} = {'firstName': 'Patricia', 'lastName': 'Roberts', 'email': 't20250817173834@gmail.com', 'password': 'TXTmHUnGNh'}</msg>
+<var>${body}</var>
+<arg>firstName=${first_name}</arg>
+<arg>lastName=${last_name}</arg>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.429648" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:34.429648" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.429648" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:34.427664" elapsed="0.001984"/>
+</group>
+<group name="Call Register API">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:34.429648" level="INFO">Creating Session using : alias=Register, url=https://thinking-tester-contact-list.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Register</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-17T17:38:34.429648" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:35.482967" level="INFO">POST Request : url=https://thinking-tester-contact-list.herokuapp.com/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '112'} 
+ body=b'{"firstName": "Patricia", "lastName": "Roberts", "email": "t20250817173834@gmail.com", "password": "TXTmHUnGNh"}' 
+ </msg>
+<msg time="2025-08-17T17:38:35.482967" level="INFO">POST Response : url=https://thinking-tester-contact-list.herokuapp.com/users 
+ status=201, reason=Created 
+ headers={'Server': 'Cowboy', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1755427114&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=%2Fv8MuDMz9hP5r2VwN20q0hzxDthgzdoF4yZnfE3CD2I%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1755427114&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=%2Fv8MuDMz9hP5r2VwN20q0hzxDthgzdoF4yZnfE3CD2I%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Set-Cookie': 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTR9.cxZ1NwpNiXXos0PdzCZa8ZSb8bWsRg4IG2w-Wf8uBVE; Max-Age=684; Path=/; Expires=Sun, 17 Aug 2025 10:49:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '291', 'Etag': 'W/"123-wwnRdCVsX/wybl2c8eJQD9kO7gY"', 'Date': 'Sun, 17 Aug 2025 10:38:34 GMT', 'Via': '1.1 vegur'} 
+ body={"user":{"_id":"68a1b12a8a0a4b00159a27a0","firstName":"Patricia","lastName":"Roberts","email":"t20250817173834@gmail.com","__v":1},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTR9.cxZ1NwpNiXXos0PdzCZa8ZSb8bWsRg4IG2w-Wf8uBVE"} 
+ </msg>
+<msg time="2025-08-17T17:38:35.483965" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>alias=Register</arg>
+<arg>url=${ADD_USER_URI}</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-17T17:38:34.429648" elapsed="1.054317"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:34.429648" elapsed="1.054317"/>
+</group>
+<group name="Response Validation">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][firstName]</arg>
+<arg>${first_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:35.483965" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][lastName]</arg>
+<arg>${last_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:35.483965" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][email]</arg>
+<arg>${email}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:35.484971" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${response.json()}[token]</value>
+<value>${first_name}</value>
+<value>${last_name}</value>
+<value>${email}</value>
+<value>${password}</value>
+<status status="PASS" start="2025-08-17T17:38:35.484971" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-08-17T17:38:35.483965" elapsed="0.001006"/>
+</group>
+<msg time="2025-08-17T17:38:35.484971" level="INFO">${registered_bearer_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTR9.cxZ1NwpNiXXos0PdzCZa8ZSb8bWsRg4IG2w-Wf8uBVE</msg>
+<msg time="2025-08-17T17:38:35.484971" level="INFO">${first_name} = Patricia</msg>
+<msg time="2025-08-17T17:38:35.484971" level="INFO">${last_name} = Roberts</msg>
+<msg time="2025-08-17T17:38:35.484971" level="INFO">${email} = t20250817173834@gmail.com</msg>
+<msg time="2025-08-17T17:38:35.484971" level="INFO">${password} = TXTmHUnGNh</msg>
+<var>${registered_bearer_token}</var>
+<var>${first_name}</var>
+<var>${last_name}</var>
+<var>${email}</var>
+<var>${password}</var>
+<status status="PASS" start="2025-08-17T17:38:34.427664" elapsed="1.057307"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:35.485975" level="INFO">${body} = {'email': 't20250817173834@gmail.com', 'password': 'TXTmHUnGNh'}</msg>
+<var>${body}</var>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:35.485975" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:35.485975" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:35.485975" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:34.427664" elapsed="1.058311"/>
+</group>
+<group name="Call Login API">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:35.485975" level="INFO">Creating Session using : alias=Login, url=https://thinking-tester-contact-list.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Login</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-17T17:38:35.485975" elapsed="0.000998"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:36.533836" level="INFO">POST Request : url=https://thinking-tester-contact-list.herokuapp.com/users/login 
+ path_url=/users/login 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '64'} 
+ body=b'{"email": "t20250817173834@gmail.com", "password": "TXTmHUnGNh"}' 
+ </msg>
+<msg time="2025-08-17T17:38:36.533836" level="INFO">POST Response : url=https://thinking-tester-contact-list.herokuapp.com/users/login 
+ status=200, reason=OK 
+ headers={'Server': 'Cowboy', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1755427115&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=%2BQBLrWQiPUE2y7rqLHrQb0EntUEWydYHeDJlh3ioeJU%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1755427115&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=%2BQBLrWQiPUE2y7rqLHrQb0EntUEWydYHeDJlh3ioeJU%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Set-Cookie': 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7CsuozpOukr2V0; Max-Age=36000; Path=/; Expires=Sun, 17 Aug 2025 20:38:35 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '291', 'Etag': 'W/"123-yOuRPlI12CwJGU18Z+ht0QAKM6w"', 'Date': 'Sun, 17 Aug 2025 10:38:35 GMT', 'Via': '1.1 vegur'} 
+ body={"user":{"_id":"68a1b12a8a0a4b00159a27a0","firstName":"Patricia","lastName":"Roberts","email":"t20250817173834@gmail.com","__v":2},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7CsuozpOukr2V0"} 
+ </msg>
+<msg time="2025-08-17T17:38:36.533836" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=Login</arg>
+<arg>url=${LOGIN_URI}</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-17T17:38:35.486973" elapsed="1.046863"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Logged in with\nemail: ${email}\npassword: ${password}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.533836" elapsed="0.001010"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:35.485975" elapsed="1.048871"/>
+</group>
+<group name="Response Validation">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][firstName]</arg>
+<arg>${first_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.534846" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][lastName]</arg>
+<arg>${last_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.534846" elapsed="0.000993"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[user][email]</arg>
+<arg>${email}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.535839" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${response.json()}[token]</value>
+<status status="PASS" start="2025-08-17T17:38:36.535839" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2025-08-17T17:38:36.534846" elapsed="0.000993"/>
+</group>
+<msg time="2025-08-17T17:38:36.535839" level="INFO">${bearer_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7CsuozpOukr2V0</msg>
+<var>${bearer_token}</var>
+<status status="PASS" start="2025-08-17T17:38:34.427664" elapsed="2.108175"/>
+</kw>
+<kw name="Add contacts" owner="function_keywords">
+<for flavor="IN RANGE">
+<iter>
+<group name="Prepare Add Contacts Body And Headers">
+<kw name="First Name" owner="faker">
+<msg time="2025-08-17T17:38:36.536733" level="INFO">${first_name} = Jennifer</msg>
+<var>${first_name}</var>
+<status status="PASS" start="2025-08-17T17:38:36.536733" elapsed="0.000000"/>
+</kw>
+<kw name="Last Name" owner="faker">
+<msg time="2025-08-17T17:38:36.537755" level="INFO">${last_name} = White</msg>
+<var>${last_name}</var>
+<status status="PASS" start="2025-08-17T17:38:36.536733" elapsed="0.001022"/>
+</kw>
+<kw name="Date Of Birth" owner="faker">
+<msg time="2025-08-17T17:38:36.537755" level="INFO">${birthdate} = 1946-01-07</msg>
+<var>${birthdate}</var>
+<doc>Generate a random date of birth represented as a Date object,
+constrained by optional miminimum_age and maximum_age
+parameters.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.537755" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2025-08-17T17:38:36.537755" level="INFO">${birthdate} = 1946-01-07</msg>
+<var>${birthdate}</var>
+<arg>${birthdate}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.537755" elapsed="0.000000"/>
+</kw>
+<kw name="Email" owner="faker">
+<msg time="2025-08-17T17:38:36.537755" level="INFO">${email} = sarahyoung@gmail.com</msg>
+<var>${email}</var>
+<arg>domain=gmail.com</arg>
+<status status="PASS" start="2025-08-17T17:38:36.537755" elapsed="0.000000"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2025-08-17T17:38:36.538753" level="INFO">${phone_last_8_digits} = 97436977</msg>
+<var>${phone_last_8_digits}</var>
+<arg>length=8</arg>
+<arg>chars=[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.538753" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-17T17:38:36.538753" level="INFO">${phone} = 0997436977</msg>
+<var>${phone}</var>
+<arg>09${phone_last_8_digits}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.538753" elapsed="0.000000"/>
+</kw>
+<kw name="Street Address" owner="faker">
+<msg time="2025-08-17T17:38:36.538753" level="INFO">${street1} = 05390 Kirk Track Apt. 996</msg>
+<var>${street1}</var>
+<doc>:example: '791 Crist Parks'</doc>
+<status status="PASS" start="2025-08-17T17:38:36.538753" elapsed="0.000000"/>
+</kw>
+<kw name="Street Address" owner="faker">
+<msg time="2025-08-17T17:38:36.538753" level="INFO">${street2} = 2106 Hill Village Suite 747</msg>
+<var>${street2}</var>
+<doc>:example: '791 Crist Parks'</doc>
+<status status="PASS" start="2025-08-17T17:38:36.538753" elapsed="0.000000"/>
+</kw>
+<kw name="City" owner="faker">
+<msg time="2025-08-17T17:38:36.539741" level="INFO">${city} = Heatherfort</msg>
+<var>${city}</var>
+<doc>:example: 'Sashabury'</doc>
+<status status="PASS" start="2025-08-17T17:38:36.538753" elapsed="0.000988"/>
+</kw>
+<kw name="State" owner="faker">
+<msg time="2025-08-17T17:38:36.539741" level="INFO">${state_province} = Tennessee</msg>
+<var>${state_province}</var>
+<status status="PASS" start="2025-08-17T17:38:36.539741" elapsed="0.000000"/>
+</kw>
+<kw name="Postalcode" owner="faker">
+<msg time="2025-08-17T17:38:36.539741" level="INFO">${postal_code} = 91474</msg>
+<var>${postal_code}</var>
+<status status="PASS" start="2025-08-17T17:38:36.539741" elapsed="0.000000"/>
+</kw>
+<kw name="Current Country" owner="faker">
+<msg time="2025-08-17T17:38:36.539741" level="INFO">${country} = United States</msg>
+<var>${country}</var>
+<doc>:sample:</doc>
+<status status="PASS" start="2025-08-17T17:38:36.539741" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:36.539741" level="INFO">${body} = {'firstName': 'Jennifer', 'lastName': 'White', 'birthdate': '1946-01-07', 'email': 'sarahyoung@gmail.com', 'phone': '0997436977', 'city': 'Heatherfort', 'street1': '05390 Kirk Track Apt. 996', 'street...</msg>
+<var>${body}</var>
+<arg>firstName=${first_name}</arg>
+<arg>lastName=${last_name}</arg>
+<arg>birthdate=${birthdate}</arg>
+<arg>email=${email}</arg>
+<arg>phone=${phone}</arg>
+<arg>city=${city}</arg>
+<arg>street1=${street1}</arg>
+<arg>street2=${street2}</arg>
+<arg>stateProvince=${state_province}</arg>
+<arg>postalCode=${postal_code}</arg>
+<arg>country=${country}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.539741" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:36.540739" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7Cs...</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${bearer_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.539741" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:36.536733" elapsed="0.004006"/>
+</group>
+<group name="Call Add Contact API">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:36.540739" level="INFO">Creating Session using : alias=Add Contact, url=https://thinking-tester-contact-list.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Add Contact</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-17T17:38:36.540739" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:37.567621" level="INFO">POST Request : url=https://thinking-tester-contact-list.herokuapp.com/contacts 
+ path_url=/contacts 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7CsuozpOukr2V0', 'Content-Length': '315'} 
+ body=b'{"firstName": "Jennifer", "lastName": "White", "birthdate": "1946-01-07", "email": "sarahyoung@gmail.com", "phone": "0997436977", "city": "Heatherfort", "street1": "05390 Kirk Track Apt. 996", "street2": "2106 Hill Village Suite 747", "stateProvince": "Tennessee", "postalCode": "91474", "country": "United States"}' 
+ </msg>
+<msg time="2025-08-17T17:38:37.567621" level="INFO">POST Response : url=https://thinking-tester-contact-list.herokuapp.com/contacts 
+ status=201, reason=Created 
+ headers={'Server': 'Cowboy', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1755427116&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=zvPdRZWQ69qVWVe5l7XPO4UORfbxsFqEi6FJqAjOSTg%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1755427116&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=zvPdRZWQ69qVWVe5l7XPO4UORfbxsFqEi6FJqAjOSTg%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '370', 'Etag': 'W/"172-/YF5/jxI41SyqzwERPXwg2ZqpWs"', 'Date': 'Sun, 17 Aug 2025 10:38:36 GMT', 'Via': '1.1 vegur'} 
+ body={"_id":"68a1b12cf18f830015804973","firstName":"Jennifer","lastName":"White","birthdate":"1946-01-07","email":"sarahyoung@gmail.com","phone":"0997436977","city":"Heatherfort","street1":"05390 Kirk Track Apt. 996","street2":"2106 Hill Village Suite 747","stateProvince":"Tennessee","postalCode":"91474","country":"United States","owner":"68a1b12a8a0a4b00159a27a0","__v":0} 
+ </msg>
+<msg time="2025-08-17T17:38:37.567621" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>alias=Add Contact</arg>
+<arg>url=${ADD_CONTACT}</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-17T17:38:36.540739" elapsed="1.026882"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-17T17:38:37.568621" level="INFO">${response_json} = {
+    "_id": "68a1b12cf18f830015804973",
+    "firstName": "Jennifer",
+    "lastName": "White",
+    "birthdate": "1946-01-07",
+    "email": "sarahyoung@gmail.com",
+    "phone": "0997436977",
+    "city"...</msg>
+<var>${response_json}</var>
+<arg>json.dumps(${response.json()}, indent=4)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.567621" elapsed="0.001000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-17T17:38:37.568621" level="INFO">${body} = {
+    "firstName": "Jennifer",
+    "lastName": "White",
+    "birthdate": "1946-01-07",
+    "email": "sarahyoung@gmail.com",
+    "phone": "0997436977",
+    "city": "Heatherfort",
+    "street1": "05390 ...</msg>
+<var>${body}</var>
+<arg>json.dumps(${body}, indent=4)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.568621" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-17T17:38:37.568621" level="INFO">{
+    "_id": "68a1b12cf18f830015804973",
+    "firstName": "Jennifer",
+    "lastName": "White",
+    "birthdate": "1946-01-07",
+    "email": "sarahyoung@gmail.com",
+    "phone": "0997436977",
+    "city": "Heatherfort",
+    "street1": "05390 Kirk Track Apt. 996",
+    "street2": "2106 Hill Village Suite 747",
+    "stateProvince": "Tennessee",
+    "postalCode": "91474",
+    "country": "United States",
+    "owner": "68a1b12a8a0a4b00159a27a0",
+    "__v": 0
+}</msg>
+<arg>${response_json}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.568621" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-17T17:38:37.568621" level="INFO">{
+    "firstName": "Jennifer",
+    "lastName": "White",
+    "birthdate": "1946-01-07",
+    "email": "sarahyoung@gmail.com",
+    "phone": "0997436977",
+    "city": "Heatherfort",
+    "street1": "05390 Kirk Track Apt. 996",
+    "street2": "2106 Hill Village Suite 747",
+    "stateProvince": "Tennessee",
+    "postalCode": "91474",
+    "country": "United States"
+}</msg>
+<arg>${body}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.568621" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-17T17:38:37.569637" level="INFO">${i} = 1</msg>
+<var>${i}</var>
+<arg>${i} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.568621" elapsed="0.001016"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${i}.${email} has been added.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.569637" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:36.540739" elapsed="1.028898"/>
+</group>
+<group name="Response Validation">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[firstName]</arg>
+<arg>${first_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.569637" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[lastName]</arg>
+<arg>${last_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.569637" elapsed="0.000984"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[birthdate]</arg>
+<arg>${birthdate}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.570621" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[email]</arg>
+<arg>${email}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.570621" elapsed="0.000999"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[phone]</arg>
+<arg>${phone}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.571620" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[street1]</arg>
+<arg>${street1}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.571620" elapsed="0.001017"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[street2]</arg>
+<arg>${street2}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.572637" elapsed="0.000508"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[city]</arg>
+<arg>${city}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.573145" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[stateProvince]</arg>
+<arg>${stateProvince}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.573145" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[postalCode]</arg>
+<arg>${postalCode}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.573145" elapsed="0.001011"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[country]</arg>
+<arg>${country}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.574156" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:37.569637" elapsed="0.004519"/>
+</group>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-08-17T17:38:36.536733" elapsed="1.037423"/>
+</iter>
+<var>${i}</var>
+<value>${contact_number}</value>
+<status status="PASS" start="2025-08-17T17:38:36.536733" elapsed="1.037423"/>
+</for>
+<arg>bearer_token=${bearer_token}</arg>
+<arg>contact_number=1</arg>
+<status status="PASS" start="2025-08-17T17:38:36.536733" elapsed="1.037423"/>
+</kw>
+<kw name="Export contacts as JSON" owner="function_keywords">
+<group name="Prepare Get Contacts Body And Headers">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:37.575146" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7Cs...</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${bearer_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.575146" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:37.575146" elapsed="0.000000"/>
+</group>
+<group name="Call Get Contacts API">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:37.575146" level="INFO">Creating Session using : alias=Get Contacts, url=https://thinking-tester-contact-list.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Get Contacts</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-17T17:38:37.575146" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:38.585927" level="INFO">GET Request : url=https://thinking-tester-contact-list.herokuapp.com/contacts 
+ path_url=/contacts 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7CsuozpOukr2V0'} 
+ body=None 
+ </msg>
+<msg time="2025-08-17T17:38:38.585927" level="INFO">GET Response : url=https://thinking-tester-contact-list.herokuapp.com/contacts 
+ status=200, reason=OK 
+ headers={'Server': 'Cowboy', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1755427117&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=sTdxv6PcTQ4WaIYbKUxAd281YvQ21zmvZ0GhLik2n1A%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1755427117&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=sTdxv6PcTQ4WaIYbKUxAd281YvQ21zmvZ0GhLik2n1A%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '372', 'Etag': 'W/"174-eB+IA5iAlofJnPax8k3yla3bABs"', 'Date': 'Sun, 17 Aug 2025 10:38:37 GMT', 'Via': '1.1 vegur'} 
+ body=[{"_id":"68a1b12cf18f830015804973","firstName":"Jennifer","lastName":"White","birthdate":"1946-01-07","email":"sarahyoung@gmail.com","phone":"0997436977","city":"Heatherfort","street1":"05390 Kirk Track Apt. 996","street2":"2106 Hill Village Suite 747","stateProvince":"Tennessee","postalCode":"91474","country":"United States","owner":"68a1b12a8a0a4b00159a27a0","__v":0}] 
+ </msg>
+<msg time="2025-08-17T17:38:38.585927" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=Get Contacts</arg>
+<arg>url=${GET_CONTACTS}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-17T17:38:37.575146" elapsed="1.010781"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.586928" level="INFO">${response_json} = [
+    {
+        "_id": "68a1b12cf18f830015804973",
+        "firstName": "Jennifer",
+        "lastName": "White",
+        "birthdate": "1946-01-07",
+        "email": "sarahyoung@gmail.com",
+        "ph...</msg>
+<var>${response_json}</var>
+<arg>json.dumps(${response.json()}, indent=4)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.585927" elapsed="0.001001"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.586928" level="INFO">[
+    {
+        "_id": "68a1b12cf18f830015804973",
+        "firstName": "Jennifer",
+        "lastName": "White",
+        "birthdate": "1946-01-07",
+        "email": "sarahyoung@gmail.com",
+        "phone": "0997436977",
+        "city": "Heatherfort",
+        "street1": "05390 Kirk Track Apt. 996",
+        "street2": "2106 Hill Village Suite 747",
+        "stateProvince": "Tennessee",
+        "postalCode": "91474",
+        "country": "United States",
+        "owner": "68a1b12a8a0a4b00159a27a0",
+        "__v": 0
+    }
+]</msg>
+<arg>${response_json}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.586928" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:37.575146" elapsed="1.011782"/>
+</group>
+<group name="Create List Of Contacts And Create JSON File">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.586928" level="INFO">${index} = 0</msg>
+<var>${index}</var>
+<arg>${0}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.586928" elapsed="0.000000"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.586928" level="INFO">${contact_list} = []</msg>
+<var>${contact_list}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.586928" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.587926" level="INFO">${index} = 1</msg>
+<var>${index}</var>
+<arg>${index}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.587926" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.587926" level="INFO">${data_dict} = {'name': 'Jennifer White', 'birthdate': '1946-01-07', 'email': 'sarahyoung@gmail.com', 'phoneNumber': '0997436977', 'address': '05390 Kirk Track Apt. 996, 2106 Hill Village Suite 747, Heatherfort, Ten...</msg>
+<var>${data_dict}</var>
+<arg>name=${contact}[firstName] ${contact}[lastName]</arg>
+<arg>birthdate=${contact}[birthdate]</arg>
+<arg>email=${contact}[email]</arg>
+<arg>phoneNumber=${contact}[phone]</arg>
+<arg>address=${contact}[street1], ${contact}[street2], ${contact}[city], ${contact}[stateProvince]</arg>
+<arg>cityStatePostalCode=${contact}[postalCode]</arg>
+<arg>country=${contact}[country]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.587926" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.588946" level="INFO">${contact_json} = {'contact1': {'name': 'Jennifer White', 'birthdate': '1946-01-07', 'email': 'sarahyoung@gmail.com', 'phoneNumber': '0997436977', 'address': '05390 Kirk Track Apt. 996, 2106 Hill Village Suite 747, Hea...</msg>
+<var>${contact_json}</var>
+<arg>contact${index}=${data_dict}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.587926" elapsed="0.001020"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${contact_list}</arg>
+<arg>${contact_json}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.588946" elapsed="0.000000"/>
+</kw>
+<var name="${contact}">{'_id': '68a1b12cf18f830015804973', 'firstName': 'Jennifer', 'lastName': 'White', 'birthdate': '1946-01-07', 'email': 'sarahyoung@gmail.com', 'phone': '0997436977', 'city': 'Heatherfort', 'street1': '...</var>
+<status status="PASS" start="2025-08-17T17:38:38.587926" elapsed="0.001020"/>
+</iter>
+<var>${contact}</var>
+<value>@{response.json()}</value>
+<status status="PASS" start="2025-08-17T17:38:38.586928" elapsed="0.002018"/>
+</for>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.588946" level="INFO">[{'contact1': {'name': 'Jennifer White', 'birthdate': '1946-01-07', 'email': 'sarahyoung@gmail.com', 'phoneNumber': '0997436977', 'address': '05390 Kirk Track Apt. 996, 2106 Hill Village Suite 747, Heatherfort, Tennessee', 'cityStatePostalCode': '91474', 'country': 'United States'}}]</msg>
+<arg>${contact_list}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.588946" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.588946" level="INFO">${dump_json} = [
+    {
+        "contact1": {
+            "name": "Jennifer White",
+            "birthdate": "1946-01-07",
+            "email": "sarahyoung@gmail.com",
+            "phoneNumber": "0997436977",
+       ...</msg>
+<var>${dump_json}</var>
+<arg>json.dumps(${contact_list}, indent=4, ensure_ascii=False)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.588946" elapsed="0.000000"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2025-08-17T17:38:38.589926" level="INFO" html="true">Created file '&lt;a href="file://C:\Users\Crwar\Desktop\Portfolio\robot-framework\api-automation\robot-framework-api\Result\contacts.json"&gt;C:\Users\Crwar\Desktop\Portfolio\robot-framework\api-automation\robot-framework-api\Result\contacts.json&lt;/a&gt;'.</msg>
+<arg>api-automation/robot-framework-api/Result/contacts.json</arg>
+<arg>${dump_json}</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.588946" elapsed="0.000980"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:38.586928" elapsed="0.002998"/>
+</group>
+<arg>bearer_token=${bearer_token}</arg>
+<status status="PASS" start="2025-08-17T17:38:37.574156" elapsed="1.015770"/>
+</kw>
+<kw name="Log out" owner="function_keywords">
+<group name="Prepare Logout Headers">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:38.590926" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7Cs...</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${bearer_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.590926" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:38.590926" elapsed="0.000000"/>
+</group>
+<group name="Call Logout API">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:38.590926" level="INFO">Creating Session using : alias=Logout, url=https://thinking-tester-contact-list.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Logout</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-17T17:38:38.590926" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:39.627579" level="INFO">POST Request : url=https://thinking-tester-contact-list.herokuapp.com/users/logout 
+ path_url=/users/logout 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyYThhMGE0YjAwMTU5YTI3YTAiLCJpYXQiOjE3NTU0MjcxMTV9.DIXu6okz0i1IRp1kYkYTu6iAmuR3T7CsuozpOukr2V0', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-08-17T17:38:39.627579" level="INFO">POST Response : url=https://thinking-tester-contact-list.herokuapp.com/users/logout 
+ status=200, reason=OK 
+ headers={'Server': 'Cowboy', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1755427118&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=0OMkIyUj4gy3Ug5grUIQ8Fa1ipOhk7vKMqwemA1bYKs%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1755427118&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=0OMkIyUj4gy3Ug5grUIQ8Fa1ipOhk7vKMqwemA1bYKs%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Date': 'Sun, 17 Aug 2025 10:38:38 GMT', 'Content-Length': '0', 'Via': '1.1 vegur'} 
+ body=None 
+ </msg>
+<msg time="2025-08-17T17:38:39.627579" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=Logout</arg>
+<arg>url=${LOGOUT_URI}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-17T17:38:38.590926" elapsed="1.036653"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:39.627579" elapsed="0.001015"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:38.590926" elapsed="1.037668"/>
+</group>
+<arg>bearer_token=${bearer_token}</arg>
+<status status="PASS" start="2025-08-17T17:38:38.590926" elapsed="1.037668"/>
+</kw>
+<kw name="Delete user" owner="function_keywords">
+<group name="Prepare User Deletion Headers">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-17T17:38:39.628594" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyOWYxOGY4MzAwMTU4MDQ5NzEiLCJpYXQiOjE3NTU0MjcxMTN9.b6CKKjqp8MfE1zFUK0F2UPV37fWvtEiq...</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${bearer_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-17T17:38:39.628594" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:39.628594" elapsed="0.000000"/>
+</group>
+<group name="Call Get Contacts API">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:39.629595" level="INFO">Creating Session using : alias=Get Contacts, url=https://thinking-tester-contact-list.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Get Contacts</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-17T17:38:39.629595" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-08-17T17:38:40.632587" level="INFO">GET Request : url=https://thinking-tester-contact-list.herokuapp.com/users/me 
+ path_url=/users/me 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGExYjEyOWYxOGY4MzAwMTU4MDQ5NzEiLCJpYXQiOjE3NTU0MjcxMTN9.b6CKKjqp8MfE1zFUK0F2UPV37fWvtEiqESCkBAWTWuc'} 
+ body=None 
+ </msg>
+<msg time="2025-08-17T17:38:40.632587" level="INFO">GET Response : url=https://thinking-tester-contact-list.herokuapp.com/users/me 
+ status=200, reason=OK 
+ headers={'Server': 'Cowboy', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1755427119&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=grgjX8GmngE0N5QvAbnFG8Pn0QZGMxAP5u7My7B8ubU%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1755427119&amp;sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&amp;s=grgjX8GmngE0N5QvAbnFG8Pn0QZGMxAP5u7My7B8ubU%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '121', 'Etag': 'W/"79-bpGkwuYWXqXboJQksR2IyIo/I1Q"', 'Date': 'Sun, 17 Aug 2025 10:38:39 GMT', 'Via': '1.1 vegur'} 
+ body={"_id":"68a1b129f18f830015804971","firstName":"Brandon","lastName":"Skinner","email":"t20250817173833@gmail.com","__v":1} 
+ </msg>
+<msg time="2025-08-17T17:38:40.632587" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=Get Contacts</arg>
+<arg>url=${DELETE_USER_URI}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-17T17:38:39.629595" elapsed="1.002992"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T17:38:40.632587" elapsed="0.001071"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:39.628594" elapsed="1.005064"/>
+</group>
+<arg>bearer_token=${registered_bearer_token}</arg>
+<status status="PASS" start="2025-08-17T17:38:39.628594" elapsed="1.005064"/>
+</kw>
+<status status="PASS" start="2025-08-17T17:38:33.303259" elapsed="7.330399"/>
+</test>
+<status status="PASS" start="2025-08-17T17:38:32.816286" elapsed="7.818377"/>
+</suite>
+<status status="PASS" start="2025-08-17T17:38:32.796457" elapsed="7.838206"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test" id="s1" pass="1" fail="0" skip="0">Test</stat>
+<stat name="E2E" id="s1-s1" pass="1" fail="0" skip="0">Test.E2E</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
