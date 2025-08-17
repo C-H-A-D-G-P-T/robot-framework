@@ -1,0 +1,112 @@
+[
+    {
+        "contact1": {
+            "name": "Brianna Andrews",
+            "birthdate": "1927-03-19",
+            "email": "stevenswhitney@gmail.com",
+            "phoneNumber": "0942813582",
+            "address": "4780 Price Forks 7771 Davis Point Suite 699",
+            "cityStatePostalCode": "East Kellyfort California 07954",
+            "country": "United States"
+        }
+    },
+    {
+        "contact2": {
+            "name": "Victoria Clark",
+            "birthdate": "1998-10-24",
+            "email": "crossdestiny@gmail.com",
+            "phoneNumber": "0903641793",
+            "address": "694 Richard Flats 4316 Lance Plain Apt. 585",
+            "cityStatePostalCode": "Durhamside Oregon 80530",
+            "country": "United States"
+        }
+    },
+    {
+        "contact3": {
+            "name": "Michael Gomez",
+            "birthdate": "1948-05-20",
+            "email": "hscott@gmail.com",
+            "phoneNumber": "0917934233",
+            "address": "28987 Davis Spring Apt. 322 1429 Manuel Heights",
+            "cityStatePostalCode": "Joechester Kentucky 93768",
+            "country": "United States"
+        }
+    },
+    {
+        "contact4": {
+            "name": "Samantha Harris",
+            "birthdate": "1929-09-23",
+            "email": "luis82@gmail.com",
+            "phoneNumber": "0907092755",
+            "address": "23803 Roberts Trace 25575 Washington Lakes Apt. 061",
+            "cityStatePostalCode": "South Angelaville Rhode Island 63555",
+            "country": "United States"
+        }
+    },
+    {
+        "contact5": {
+            "name": "Cheryl Hart",
+            "birthdate": "2002-10-02",
+            "email": "vstout@gmail.com",
+            "phoneNumber": "0979986724",
+            "address": "2261 Adam Flats 607 Autumn Spurs",
+            "cityStatePostalCode": "East Brianland Ohio 54679",
+            "country": "United States"
+        }
+    },
+    {
+        "contact6": {
+            "name": "Katherine Hernandez",
+            "birthdate": "1998-05-12",
+            "email": "jacksonmary@gmail.com",
+            "phoneNumber": "0976387231",
+            "address": "3153 Heather Parks Suite 441 27474 Rose Spurs",
+            "cityStatePostalCode": "Sarahland South Dakota 45904",
+            "country": "United States"
+        }
+    },
+    {
+        "contact7": {
+            "name": "Donald Jennings",
+            "birthdate": "1954-10-30",
+            "email": "kathleen33@gmail.com",
+            "phoneNumber": "0911873703",
+            "address": "4038 Obrien Hills Apt. 072 393 White Trail",
+            "cityStatePostalCode": "Port Rebeccaland Iowa 71702",
+            "country": "United States"
+        }
+    },
+    {
+        "contact8": {
+            "name": "Janice Lester",
+            "birthdate": "2014-10-22",
+            "email": "rkhan@gmail.com",
+            "phoneNumber": "0920847522",
+            "address": "54449 Mcpherson Mill 3675 Ashley Forks Suite 885",
+            "cityStatePostalCode": "Port Sheila Delaware 53252",
+            "country": "United States"
+        }
+    },
+    {
+        "contact9": {
+            "name": "Tara Rodriguez",
+            "birthdate": "1951-11-18",
+            "email": "bryan92@gmail.com",
+            "phoneNumber": "0998856850",
+            "address": "28230 Gabriel Falls 967 Patricia Run",
+            "cityStatePostalCode": "Ryanhaven New Mexico 64827",
+            "country": "United States"
+        }
+    },
+    {
+        "contact10": {
+            "name": "Cathy Stewart",
+            "birthdate": "2003-03-05",
+            "email": "howellcourtney@gmail.com",
+            "phoneNumber": "0993037294",
+            "address": "66322 Courtney Plaza 6340 Barnes Mews",
+            "cityStatePostalCode": "North Amy Michigan 70411",
+            "country": "United States"
+        }
+    }
+]

@@ -1,0 +1,1 @@
+[{"uid":"96f66a73f6ae16a0","name":"Verify that a user can successfully register, log in, add 10 contacts, export contacts as JSON, delete all contacts, and log out","time":{"start":1754971303384,"stop":1754971357431,"duration":54047},"status":"passed","severity":"normal"}]

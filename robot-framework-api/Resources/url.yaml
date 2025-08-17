@@ -1,0 +1,11 @@
+BASE_URL: https://thinking-tester-contact-list.herokuapp.com
+
+ADD_USER_URI: /users
+GET_USER_PROFILE: /users/me
+LOGIN_URI: /users/login
+LOGOUT_URI: /users/logout
+DELETE_USER_URI: /users/me
+
+ADD_CONTACT: /contacts
+GET_CONTACTS: /contacts
+DELETE_CONTACTS: /contacts
