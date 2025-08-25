@@ -11,7 +11,7 @@ Verify that a user can successfully register, log in, add 10 contacts, export co
     ...    ${email}    
     ...    ${password}=    Register New User
     ${bearer_token}=    Log in with new registered user
-    Add contacts    bearer_token=${bearer_token}    contact_number=10
+    Add contacts    bearer_token=${bearer_token}    contact_number=2
     Export contacts as JSON    bearer_token=${bearer_token}
     # Delete all contacts (Service Unavailable)
     Log out    bearer_token=${bearer_token}

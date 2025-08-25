@@ -1,12 +1,23 @@
 [
     {
         "contact1": {
-            "name": "Stephanie Garner",
-            "birthdate": "1920-08-24",
-            "email": "kathrynfox@gmail.com",
-            "phoneNumber": "0926369232",
-            "address": "150 David Inlet Suite 857, 7460 Julie Overpass, Stephentown, Kansas",
-            "cityStatePostalCode": "93202",
+            "name": "Jose Choi",
+            "birthdate": "1964-05-23",
+            "email": "wattsnathan@gmail.com",
+            "phoneNumber": "0961810730",
+            "address": "1872 Tara Lodge, 7936 Michael Summit Apt. 933, East Janet, Arizona",
+            "cityStatePostalCode": "37836",
+            "country": "United States"
+        }
+    },
+    {
+        "contact2": {
+            "name": "Jacqueline Cunningham",
+            "birthdate": "2016-02-22",
+            "email": "stoneallison@gmail.com",
+            "phoneNumber": "0978562574",
+            "address": "594 Howard Summit, 888 Mccoy Cliffs, East Rebeccaland, Arizona",
+            "cityStatePostalCode": "43839",
             "country": "United States"
         }
     }
