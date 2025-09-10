@@ -1,0 +1,6 @@
+datasources:5dae5c3440f4f704d947808c3614b0cca8f678bb
+commandlineoptions:65f95c924ba97541f47949701c4e3c51192a5b43
+suitesfrom:no-suites-from-option
+file:ac231c55ee4968e8c6c03d6491ae59de2e9db59a
+--test Robot-Framework-Email.Tc01.Read Latest Email
+--test Robot-Framework-Email.Tc02.Read Latest Email

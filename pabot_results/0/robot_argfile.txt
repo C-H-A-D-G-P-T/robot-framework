@@ -1,0 +1,16 @@
+--test Robot-Framework-Email.Tc01.Read Latest Email
+--variable CALLER_ID:7a7687a886724ab49fe99024df2dc492
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:1
+--variable PABOTISLASTEXECUTIONINPOOL:0
+--variable PABOTNUMBEROFPROCESSES:10
+--variable PABOTQUEUEINDEX:0
+--variable PABOTLASTLEVEL:Robot-Framework-Email.Tc01
+--listener RobotStackTracer
+--log NONE
+--report NONE
+--xunit NONE
+--outputdir ./pabot_results/0
+--consolecolors off
+--consolemarkers off
+robot-framework-email

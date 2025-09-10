@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Rebot 7.3.2 (Python 3.13.7 on darwin)" generated="2025-09-09T19:27:37.251839" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot-Framework-Email" source="/Users/user/Desktop/Personal Git/robot-framework/robot-framework-email">
+<suite id="s1-s1" name="Tc01" source="/Users/user/Desktop/Personal Git/robot-framework/robot-framework-email/tc01.robot">
+<test id="s1-s1-t1" name="Read Latest Email" line="5">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Here from test case 1</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-09-09T19:27:36.958598" elapsed="0.000118"/>
+</kw>
+<status status="PASS" start="2025-09-09T19:27:36.958213" elapsed="0.000571"/>
+</test>
+<status status="PASS" start="2025-09-09T19:27:36.914000" elapsed="0.000000"/>
+</suite>
+<suite id="s1-s2" name="Tc02" source="/Users/user/Desktop/Personal Git/robot-framework/robot-framework-email/tc02.robot">
+<test id="s1-s2-t1" name="Read Latest Email" line="5">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Here from test case 2</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-09-09T19:27:36.958673" elapsed="0.000113"/>
+</kw>
+<status status="PASS" start="2025-09-09T19:27:36.958287" elapsed="0.000565"/>
+</test>
+<status status="PASS" start="2025-09-09T19:27:36.914290" elapsed="0.044704"/>
+</suite>
+<doc>[https://pabot.org/?ref=log|Pabot] result from 2 executions.</doc>
+<status status="PASS" start="2025-09-09T19:27:36.909000" elapsed="0.050000"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Robot-Framework-Email" id="s1" pass="2" fail="0" skip="0">Robot-Framework-Email</stat>
+<stat name="Tc01" id="s1-s1" pass="1" fail="0" skip="0">Robot-Framework-Email.Tc01</stat>
+<stat name="Tc02" id="s1-s2" pass="1" fail="0" skip="0">Robot-Framework-Email.Tc02</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
